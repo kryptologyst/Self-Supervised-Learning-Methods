@@ -1,0 +1,38 @@
+# @package _global_
+
+defaults:
+  - model: simclr
+  - data: cifar10
+  - training: default
+  - evaluation: linear_probe
+  - _self_
+
+# Experiment settings
+experiment:
+  name: "ssl_experiment"
+  tags: ["self-supervised", "contrastive-learning"]
+  seed: 42
+  device: "auto"  # auto, cuda, mps, cpu
+
+# Logging
+logging:
+  level: "INFO"
+  log_dir: "logs"
+  use_wandb: false
+  wandb_project: "self-supervised-learning"
+  wandb_entity: "kryptologyst"
+
+# Checkpointing
+checkpointing:
+  save_dir: "checkpoints"
+  save_frequency: 10
+  keep_last_n: 5
+  monitor_metric: "val_loss"
+  mode: "min"
+
+# Safety and compliance
+safety:
+  disclaimer: "This is a research/educational demonstration. Not for production use."
+  privacy_preserving: true
+  data_retention_days: 30
+  log_sanitization: true

@@ -1,0 +1,32 @@
+# @package evaluation
+
+_target_: src.eval.evaluator.LinearProbeEvaluator
+
+# Linear probe settings
+probe_epochs: 50
+probe_learning_rate: 0.001
+probe_batch_size: 256
+probe_weight_decay: 0.0
+probe_optimizer: "sgd"
+probe_scheduler: "cosine"
+
+# Evaluation metrics
+metrics:
+  - accuracy
+  - f1_macro
+  - f1_weighted
+  - precision_macro
+  - recall_macro
+  - auroc
+
+# K-NN evaluation
+knn_eval:
+  enabled: true
+  k_values: [1, 5, 10, 20]
+  distance_metric: "cosine"
+
+# Feature extraction
+feature_extraction:
+  batch_size: 256
+  normalize_features: true
+  save_features: false
